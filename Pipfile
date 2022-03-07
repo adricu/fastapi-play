@@ -1,0 +1,24 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+python-decouple = "~=3.5"
+psycopg2-binary = "~=2.9.2"
+python-utils = {ref = "0.0.43",git = "https://github.com/thegreendog/python-utils.git"}
+fastapi = "~=0.75.0"
+
+[dev-packages]
+pylint = "~=2.12.2"
+pytest = "~=6.2.5"
+"autopep8" = "~=1.6.0"
+pytest-cov = "~=3.0.0"
+pytest-env = "~=0.6.2"
+pre-commit = "~=2.12.1"
+black = "==21.12b0"
+faker = "~=11.1.0"
+isort = "~=5.10.1"
+
+[requires]
+python_version = "3.9"
