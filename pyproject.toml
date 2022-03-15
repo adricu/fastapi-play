@@ -44,6 +44,7 @@ markers = [
 ]
 
 addopts = [
+    "--cov=app",
     "--cov-report",
     "term-missing:skip-covered",
 ]
