@@ -23,8 +23,8 @@ LOG_LEVEL = config("LOG_LEVEL")
 REQUESTS_TIMEOUT = (3.05, 27)
 DEBUG = False
 PROJECT_NAME = "Fast API play project"
-API_V1_STR: str = "/api/v1"
 BACKEND_CORS_ORIGINS = config("BACKEND_CORS_ORIGINS", cast=Csv())
+API_PREFIX = "/api"
 
 ##############
 # Blockchain #

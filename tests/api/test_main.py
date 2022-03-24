@@ -3,7 +3,7 @@ from unittest.mock import patch
 
 from fastapi.testclient import TestClient
 
-from app import settings
+from tests.api.utils import API_V1_STR
 
 
 def test_address_balance(client: TestClient) -> None:
@@ -13,7 +13,7 @@ def test_address_balance(client: TestClient) -> None:
 
     # Invalid address
     response = client.get(
-        f"{settings.API_V1_STR}/wallet/balance/0x00/",
+        f"{API_V1_STR}/wallet/balance/0x00/",
     )
     assert response.status_code == 400
 
@@ -23,7 +23,7 @@ def test_address_balance(client: TestClient) -> None:
     ):
         address = "0xCBCAd2A0abaB2aC7EA7D71113a779218C7052cA4"
         response = client.get(
-            f"{settings.API_V1_STR}/wallet/balance/{address}/",
+            f"{API_V1_STR}/wallet/balance/{address}/",
         )
         assert response.status_code == 200
         content = response.json()
