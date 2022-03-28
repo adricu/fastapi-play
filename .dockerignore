@@ -1,4 +1,3 @@
-
 # Created by https://www.toptal.com/developers/gitignore/api/python,visualstudiocode,macos,linux
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,visualstudiocode,macos,linux
 
@@ -222,3 +221,12 @@ cython_debug/
 # Support for Project snippet scope
 
 # End of https://www.toptal.com/developers/gitignore/api/python,visualstudiocode,macos,linux
+
+
+# Project related
+deploy
+.dockerignore
+.git
+.gitignore
+Dockerfile
+README.md

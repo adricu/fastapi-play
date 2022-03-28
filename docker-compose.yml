@@ -1,0 +1,21 @@
+version: "3"
+services:
+  api:
+    build: .
+    image: fastapi
+    env_file:
+      - .env
+    environment:
+      DATABASE_HOST: postgres
+      ENV: DEV
+    ports:
+      - 8080:8080/tcp
+
+  postgres:
+    environment:
+      POSTGRES_DB: fastapi
+      POSTGRES_PASSWORD: fastapi
+      POSTGRES_USER: fastapi
+    image: postgres:12
+    ports:
+      - 5432:5432/tcp
