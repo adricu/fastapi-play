@@ -4,23 +4,24 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-python-decouple = "~=3.5"
+python-decouple = "~=3.8"
 psycopg2-binary = "~=2.9.2"
 python-utils = {ref = "0.0.43",git = "https://github.com/thegreendog/python-utils.git"}
-fastapi = "~=0.75.0"
+fastapi = "~=0.103.2"
 web3 = "~=5.28.0"
-uvicorn = "~=0.17.6"
+uvicorn = "~=0.23.2"
 
 [dev-packages]
 pylint = "~=2.12.2"
-pytest = "~=6.2.5"
+pytest = "~=7.4.2"
 "autopep8" = "~=1.6.0"
-pytest-cov = "~=3.0.0"
-pytest-env = "~=0.6.2"
+pytest-cov = "~=4.1.0"
+pytest-env = "~=1.0.1"
 pre-commit = "~=2.12.1"
-black = "==21.12b0"
+black = "==23.9.1"
 faker = "~=11.1.0"
-isort = "~=5.10.1"
+isort = "~=5.12.0"
+httpx = "==0.25"
 
 [requires]
 python_version = "3.9"
