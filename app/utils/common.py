@@ -21,4 +21,4 @@ def wei_to_decimal(wei, token_decimals=COMMON_ERC20_TOKEN_DECIMALS):  # pragma: 
 
 def validate_address(value):
     """Ensures that a wallet address is valid"""
-    return Web3.isChecksumAddress(value)
+    return Web3.is_checksum_address(value)

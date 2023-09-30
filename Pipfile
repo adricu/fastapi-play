@@ -8,7 +8,7 @@ python-decouple = "~=3.8"
 psycopg2-binary = "~=2.9.2"
 python-utils = {ref = "0.0.43",git = "https://github.com/thegreendog/python-utils.git"}
 fastapi = "~=0.103.2"
-web3 = "~=5.28.0"
+web3 = "==6.10.0"
 uvicorn = "~=0.23.2"
 
 [dev-packages]

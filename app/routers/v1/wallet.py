@@ -16,8 +16,8 @@ class BalanceResponse(BaseModel):
 
 
 @router.get("/balance/{address}", response_model=BalanceResponse)
-async def balance(address: str):
+async def balance(address: str) -> BalanceResponse:
     """Balance endpoint"""
     if not validate_address(address):
         raise HTTPException(status_code=400, detail=f"{address} is not a valid address")
-    return {"erc20": get_acr_balance(address), "erc721": get_nft_balance(address)}
+    return BalanceResponse(erc20=f"{get_acr_balance(address):.2f}", erc721=get_nft_balance(address))
