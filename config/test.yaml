@@ -1,0 +1,31 @@
+api:
+  title: "Fast API play project"
+  host: 0.0.0.0
+  port: 8000
+  access_log: true
+  workers: 1
+  reload: false
+  auth:
+    public_password: "not-secure"
+    secure_password: "not-secure"
+
+blockchain:
+  node:
+    infura:
+      network:
+      project_id:
+      project_secret:
+    rpc_url: https://api.avax-test.network/ext/bc/C/rpc
+    username:
+    password:
+  contracts:
+    erc20: "0xA3213f4B06292c5b1D47fBaEBa7051727b8567Bd"
+    nft: "0x73580eD3d8c9447b1092E508A432a7D50c95Fb7c"
+
+logging:
+  formatter: standard
+  handler: stdout
+  logger:    
+    root: INFO
+    app: DEBUG
+    uvicorn: INFO

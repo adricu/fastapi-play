@@ -8,7 +8,8 @@
       "name": "Python: FastAPI",
       "type": "python",
       "request": "launch",
-      "program": "${workspaceFolder}/app/main.py",
+      "module": "app",
+      "args": ["local"],
       "console": "integratedTerminal",
       "envFile": "${workspaceFolder}/.env",
       "justMyCode": false

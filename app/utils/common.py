@@ -1,24 +1,28 @@
-"""Common utils"""
-import logging
-from decimal import Decimal
+"""Common utils."""
+from enum import Enum
+from pathlib import Path
 
-from web3 import Web3
+from envyaml import EnvYAML
 
-LOGGER = logging.getLogger(__name__)
-
-COMMON_ERC20_TOKEN_DECIMALS = 18
-
-
-def decimal_to_wei(erc20, token_decimals=COMMON_ERC20_TOKEN_DECIMALS):  # pragma: no cover
-    """Converts an ERC20/Ether to wei"""
-    return int(Decimal(str(erc20)) * Decimal(f"1e{token_decimals}"))
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+REQUESTS_TIMEOUT = (3.05, 27)
 
 
-def wei_to_decimal(wei, token_decimals=COMMON_ERC20_TOKEN_DECIMALS):  # pragma: no cover
-    """Converts a wei to ERC20/Ether"""
-    return Decimal(str(wei)) * Decimal(f"1e-{token_decimals}")
+class Environment(str, Enum):
+    """Enviornment possibilities."""
+
+    LOCAL = "local"
+    TEST = "test"
+    STAGING = "staging"
+    PRODUCTION = "production"
 
 
-def validate_address(value):
-    """Ensures that a wallet address is valid"""
-    return Web3.is_checksum_address(value)
+ENVIRONMENTS = [environment.value for environment in Environment]
+
+
+def load_config(environment: Environment) -> EnvYAML:
+    """Load and return app confiuration"""
+    config_file_path = f"config/{environment}.yaml"
+    if not Path(config_file_path).is_file():
+        raise ValueError(f"Unable to find configuration file: {config_file_path}.")  # pragma: no cover
+    return EnvYAML(config_file_path)
