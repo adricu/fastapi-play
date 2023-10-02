@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "829ee63807d9baa8bb7e8e1aa2aa62f85c0feb3d0430af2ba92b90426b8e80f6"
+            "sha256": "d677ce617f6ea132e12343e9b2d4a421a6d007e283144f0b6f4bd1356da6cbfe"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -1806,11 +1806,11 @@
         },
         "identify": {
             "hashes": [
-                "sha256:24437fbf6f4d3fe6efd0eb9d67e24dd9106db99af5ceb27996a5f7895f24bf1b",
-                "sha256:d43d52b86b15918c137e3a74fff5224f60385cd0e9c38e99d07c257f02f151a5"
+                "sha256:afe67f26ae29bab007ec21b03d4114f41316ab9dd15aa8736a167481e108da54",
+                "sha256:f302a4256a15c849b91cfcdcec052a8ce914634b2f77ae87dad29cd749f2d88d"
             ],
             "markers": "python_version >= '3.8'",
-            "version": "==2.5.29"
+            "version": "==2.5.30"
         },
         "idna": {
             "hashes": [
@@ -1904,11 +1904,11 @@
         },
         "packaging": {
             "hashes": [
-                "sha256:994793af429502c4ea2ebf6bf664629d07c1a9fe974af92966e4b8d2df7edc61",
-                "sha256:a392980d2b6cffa644431898be54b0045151319d1e7ec34f0cfed48767dd334f"
+                "sha256:048fb0e9405036518eaaf48a55953c750c11e1a1b68e0dd1a9d62ed0c092cfc5",
+                "sha256:8c491190033a9af7e1d931d0b5dacc2ef47509b34dd0de67ed209b5203fc88c7"
             ],
             "markers": "python_version >= '3.7'",
-            "version": "==23.1"
+            "version": "==23.2"
         },
         "pathspec": {
             "hashes": [
@@ -1977,15 +1977,6 @@
             "index": "pypi",
             "markers": "python_version >= '3.7'",
             "version": "==4.1.0"
-        },
-        "pytest-env": {
-            "hashes": [
-                "sha256:603fe216e8e03a5d134989cb41317c59aabef013d2250c71b864ab0798fbe6f6",
-                "sha256:e8faf927c6fcdbbc8fe3317506acc116713c9708d01652a0fd945f9ae27b71aa"
-            ],
-            "index": "pypi",
-            "markers": "python_version >= '3.7'",
-            "version": "==1.0.1"
         },
         "python-dateutil": {
             "hashes": [

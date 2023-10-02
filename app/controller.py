@@ -13,7 +13,10 @@ def create_api(config: EnvYAML) -> FastAPI:
         {
             "name": "v1",
             "description": "API version 1, check link on the right",
-            "externalDocs": {"description": "sub-docs", "url": "http://127.0.0.1:8000/v1/docs"},
+            "externalDocs": {
+                "description": "sub-docs",
+                "url": "http://127.0.0.1:8000/v1/docs",
+            },
         },
     ]
     api = FastAPI(title=config["api"]["title"], openapi_tags=tags_metadata)
@@ -23,5 +26,7 @@ def create_api(config: EnvYAML) -> FastAPI:
     def healthz() -> HealthResponse:
         return HealthResponse(status="ok")
 
-    api.mount("/v1", get_api_v1(config))
+    api_v1 = get_api_v1(config)
+    register_exception_handlers(api_v1)
+    api.mount("/v1", api_v1)
     return api
