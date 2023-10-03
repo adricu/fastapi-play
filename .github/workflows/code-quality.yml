@@ -20,13 +20,12 @@ jobs:
         pip install pipenv==v2022.3.28
         export PIPENV_VENV_IN_PROJECT=1
         pipenv install --dev
-        cp .env.dist .env
     - name: Analysing the code with pylint
       run: |
         .venv/bin/pylint $(git ls-files '*.py')
     - name: Black formatter
       run: |
-        .venv/bin/black .
+        .venv/bin/black --check  .
     - name: Test with pytest
       run: |
-        .venv/bin/pytest -x
+        .venv/bin/pytest
