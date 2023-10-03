@@ -14,7 +14,9 @@ def get_wallet_router(config: EnvYAML) -> FastAPI:
     async def balance(address: str) -> BalanceResponse:
         """Balance endpoint."""
         if not validate_address(address):
-            raise HTTPException(status_code=400, detail=f"{address} is not a valid address")
+            raise HTTPException(
+                status_code=400, detail=f"{address} is not a valid address"
+            )
         blockchain_config = config["blockchain"]
         return BalanceResponse(
             erc20=f"{get_acr_balance(blockchain_config, address):.2f}",

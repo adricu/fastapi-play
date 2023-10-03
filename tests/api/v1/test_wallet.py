@@ -6,7 +6,9 @@ from unittest.mock import patch
 from fastapi import status
 from fastapi.testclient import TestClient
 
-ADDRESS_BALANCE_ENDPOINT = partial("/v1/wallet/balance/{address}".format)
+ADDRESS_BALANCE_ENDPOINT = partial(
+    "/v1/wallet/balance/{address}".format  # pylint: disable=consider-using-f-string
+)
 
 
 def test_address_balance(client: TestClient) -> None:
@@ -20,9 +22,9 @@ def test_address_balance(client: TestClient) -> None:
     assert "is not a valid address" in response.json()["detail"]
 
     # Valid address
-    with patch("app.routers.v1.wallet.get_acr_balance", return_value=return_value_erc20), patch(
-        "app.routers.v1.wallet.get_nft_balance", return_value=return_value_nft
-    ):
+    with patch(
+        "app.routers.v1.wallet.get_acr_balance", return_value=return_value_erc20
+    ), patch("app.routers.v1.wallet.get_nft_balance", return_value=return_value_nft):
         address = "0xCBCAd2A0abaB2aC7EA7D71113a779218C7052cA4"
         response = client.get(ADDRESS_BALANCE_ENDPOINT(address=address))
         assert response.status_code == status.HTTP_200_OK

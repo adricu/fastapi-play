@@ -17,7 +17,9 @@ ABI_PATH = os.path.join(BASE_DIR, "abi")
 ACR_TOKEN_DECIMALS = 18
 
 
-def decimal_to_wei(decimal_amount: Decimal, token_decimals=COMMON_ERC20_TOKEN_DECIMALS) -> int:
+def decimal_to_wei(
+    decimal_amount: Decimal, token_decimals=COMMON_ERC20_TOKEN_DECIMALS
+) -> int:
     """Converts an ERC20/Ether to wei"""
     return int(decimal_amount * Decimal(f"1e{token_decimals}"))
 
@@ -52,7 +54,9 @@ def get_web3_client(blockchain_config: EnvYAML) -> Web3:
 
 def get_erc20_contract(blockchain_config: EnvYAML) -> Contract:
     """Returns ERC20 contract."""
-    with open(os.path.join(ABI_PATH, "ACRToken.abi"), "r", encoding="UTF-8") as contract_abi_file:
+    with open(
+        os.path.join(ABI_PATH, "ACRToken.abi"), "r", encoding="UTF-8"
+    ) as contract_abi_file:
         erc20_contract_abi = contract_abi_file.read()
     return get_web3_client(blockchain_config).eth.contract(
         address=blockchain_config["contracts"]["erc20"],
@@ -62,7 +66,9 @@ def get_erc20_contract(blockchain_config: EnvYAML) -> Contract:
 
 def get_nft_contract(blockchain_config: EnvYAML) -> Contract:
     """Returns NTF contract."""
-    with open(os.path.join(ABI_PATH, "ACRNFT.abi"), "r", encoding="UTF-8") as contract_abi_file:
+    with open(
+        os.path.join(ABI_PATH, "ACRNFT.abi"), "r", encoding="UTF-8"
+    ) as contract_abi_file:
         nft_contract_abi = contract_abi_file.read()
     return get_web3_client(blockchain_config).eth.contract(
         address=blockchain_config["contracts"]["nft"],
@@ -70,7 +76,9 @@ def get_nft_contract(blockchain_config: EnvYAML) -> Contract:
     )
 
 
-def get_acr_balance(blockchain_config: EnvYAML, address: str, block_identifier="latest") -> Decimal:
+def get_acr_balance(
+    blockchain_config: EnvYAML, address: str, block_identifier="latest"
+) -> Decimal:
     """Returns the ACR token balance of a wallet address"""
     return wei_to_decimal(
         get_erc20_contract(blockchain_config)
@@ -80,7 +88,9 @@ def get_acr_balance(blockchain_config: EnvYAML, address: str, block_identifier="
     )
 
 
-def get_nft_balance(blockchain_config: EnvYAML, address: str, block_identifier="latest") -> int:
+def get_nft_balance(
+    blockchain_config: EnvYAML, address: str, block_identifier="latest"
+) -> int:
     """Returns the ACR NFT balance of a wallet address"""
     return (
         get_nft_contract(blockchain_config)

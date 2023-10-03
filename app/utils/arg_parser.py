@@ -7,7 +7,7 @@ from typing import Optional
 from app.utils.common import ENVIRONMENTS, Environment
 
 
-class ApiArgs(argparse.Namespace):
+class ApiArgs(argparse.Namespace):  # pylint: disable=too-few-public-methods
     """API aruments namespace."""
 
     environment: Environment
