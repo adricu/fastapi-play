@@ -6,15 +6,15 @@ api:
   workers: 1
   reload: false
   auth:
-    public_password: "not-secure"
-    secure_password: "not-secure"
+    public_password: "${PUBLIC_PASSWORD}"
+    secure_password: "${SECURE_PASSWORD}"
 
 blockchain:
   node:
     infura:
       network:
       project_id:
-      project_secret:
+      project_secret: "${INFURA_PROJECT_SECRET}"
     rpc_url: https://api.avax-test.network/ext/bc/C/rpc
     username:
     password:
@@ -27,5 +27,5 @@ logging:
   handler: stdout
   logger:    
     root: INFO
-    app: DEBUG
+    app: INFO
     uvicorn: INFO
