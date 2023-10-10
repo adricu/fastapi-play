@@ -1,7 +1,10 @@
 """Wallet api v1"""
-from envyaml import EnvYAML
-from fastapi import APIRouter, HTTPException
+from typing import Annotated
 
+from envyaml import EnvYAML
+from fastapi import APIRouter, Depends, HTTPException
+
+from app.auth import get_current_username_wrapper
 from app.routers.v1.models import BalanceResponse
 from app.utils.contract import get_acr_balance, get_nft_balance, validate_address
 
@@ -11,7 +14,10 @@ def get_wallet_router(config: EnvYAML) -> APIRouter:
     router = APIRouter()
 
     @router.get("/balance/{address}", response_model=BalanceResponse)
-    async def balance(address: str) -> BalanceResponse:
+    async def balance(
+        address: str,
+        _: Annotated[str, Depends(get_current_username_wrapper(config))],
+    ) -> BalanceResponse:
         """Balance endpoint."""
         if not validate_address(address):
             raise HTTPException(

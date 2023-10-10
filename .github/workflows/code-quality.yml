@@ -32,3 +32,6 @@ jobs:
     - name: Mypy type checker
       run: |
         .venv/bin/mypy .
+    - name: Isort import sorter
+      run: |
+        .venv/bin/isort . --check --diff

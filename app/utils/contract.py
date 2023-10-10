@@ -1,11 +1,13 @@
 """Contract related calls"""
+from decimal import Decimal
 import logging
 import os
-from decimal import Decimal
+
 from envyaml import EnvYAML
 from web3 import Web3
 from web3.contract.contract import Contract
 from web3.types import BlockIdentifier
+
 from app.utils.common import BASE_DIR
 
 LOGGER = logging.getLogger(__name__)

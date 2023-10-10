@@ -18,7 +18,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "files.associations": {},
-  "python.sortImports.path": "${workspaceFolder}/.venv/bin/isort",
+  "isort.path": "${workspaceFolder}/.venv/bin/isort",
   "python.formatting.provider": "black",
   "python.linting.pylintEnabled": true,
   "python.linting.pylintArgs": ["--rcfile=pyproject.toml"],

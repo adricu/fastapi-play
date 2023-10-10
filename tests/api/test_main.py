@@ -1,5 +1,5 @@
 """App entry point tests."""
-from unittest.mock import patch, Mock
+from unittest.mock import Mock, patch
 
 from app.__main__ import main
 from app.utils.common import Environment
