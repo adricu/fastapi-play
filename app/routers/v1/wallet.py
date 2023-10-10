@@ -6,7 +6,7 @@ from app.routers.v1.models import BalanceResponse
 from app.utils.contract import get_acr_balance, get_nft_balance, validate_address
 
 
-def get_wallet_router(config: EnvYAML) -> FastAPI:
+def get_wallet_router(config: EnvYAML) -> APIRouter:
     """Return wallet router."""
     router = APIRouter()
 

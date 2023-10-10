@@ -29,3 +29,6 @@ jobs:
     - name: Test with pytest
       run: |
         .venv/bin/pytest
+    - name: Mypy type checker
+      run: |
+        .venv/bin/mypy .
