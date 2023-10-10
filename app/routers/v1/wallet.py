@@ -1,6 +1,6 @@
 """Wallet api v1"""
 from envyaml import EnvYAML
-from fastapi import APIRouter, FastAPI, HTTPException
+from fastapi import APIRouter, HTTPException
 
 from app.routers.v1.models import BalanceResponse
 from app.utils.contract import get_acr_balance, get_nft_balance, validate_address
