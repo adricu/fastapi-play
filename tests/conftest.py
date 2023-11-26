@@ -1,8 +1,9 @@
 """Pytest conftest"""
 from envyaml import EnvYAML
 from fastapi.testclient import TestClient
-import pytest
 from httpx import BasicAuth
+import pytest
+
 from app.controller import create_api
 from app.utils.common import Environment, load_config
 
