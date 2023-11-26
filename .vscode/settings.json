@@ -1,27 +1,4 @@
 {
-  "editor.codeActionsOnSave": {
-    "source.organizeImports": true
-  },
-  "[python]": {
-    "editor.formatOnSave": true
-  },
-  "[css]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[jsonc]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "files.associations": {},
-  "isort.path": "${workspaceFolder}/.venv/bin/isort",
-  "python.formatting.provider": "black",
-  "python.linting.pylintEnabled": true,
-  "python.linting.pylintArgs": ["--rcfile=pyproject.toml"],
   "python.testing.unittestEnabled": false,
   "python.testing.pytestEnabled": true,
   "python.testing.pytestArgs": ["--no-cov", "-v"]
