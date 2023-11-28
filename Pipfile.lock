@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "15c2f1c54345e2979ac340722afe1f621b2f5303f363953eb6f53ef63862c300"
+            "sha256": "a478f25f5f428435766fb0dd742c8e8561b4f9974e1ab0c4da00c10ec7c7308e"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -1551,11 +1551,11 @@
     "develop": {
         "anyio": {
             "hashes": [
-                "sha256:44a3c9aba0f5defa43261a8b3efb97891f2bd7d804e0e1f56419befa1adfc780",
-                "sha256:91dee416e570e92c64041bd18b900d1d6fa78dff7048769ce5ac5ddad004fbb5"
+                "sha256:56a415fbc462291813a94528a779597226619c8e78af7de0507333f700011e5f",
+                "sha256:5a0bec7085176715be77df87fc66d6c9d70626bd752fcc85f57cdbee5b3760da"
             ],
-            "markers": "python_version >= '3.7'",
-            "version": "==3.7.1"
+            "markers": "python_version >= '3.8'",
+            "version": "==4.1.0"
         },
         "astroid": {
             "hashes": [
@@ -1732,12 +1732,12 @@
         },
         "httpx": {
             "hashes": [
-                "sha256:fec7d6cc5c27c578a391f7e87b9aa7d3d8fbcd034f6399f9f79b45bcc12a866a",
-                "sha256:ffd96d5cf901e63863d9f1b4b6807861dbea4d301613415d9e6e57ead15fc5d0"
+                "sha256:8b8fcaa0c8ea7b05edd69a094e63a2094c4efcb48129fb757361bc423c0ad9e8",
+                "sha256:a05d3d052d9b2dfce0e3896636467f8a5342fb2b902c819428e1ac65413ca118"
             ],
             "index": "pypi",
             "markers": "python_version >= '3.8'",
-            "version": "==0.25.1"
+            "version": "==0.25.2"
         },
         "identify": {
             "hashes": [
