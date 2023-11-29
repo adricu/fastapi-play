@@ -1,5 +1,7 @@
 # FastAPI framework tests
 
+[![codecov](https://codecov.io/github/adricu/fastapi-play/graph/badge.svg?token=WQHC01ZDKB)](https://codecov.io/github/adricu/fastapi-play)
+
 This is a toy project to play with [FastAPI](https://github.com/tiangolo/fastapi) and some standard smart contracts that can be found in [this other GitHub repository](https://github.com/adricu/avax-play).
 
 To make the project work it can point to these already deployed Smart Contracts:
