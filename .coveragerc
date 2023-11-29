@@ -4,3 +4,6 @@ source = .
 
 [report]
 skip_covered = True
+
+[xml]
+output = coverage/reports/coverage.xml
