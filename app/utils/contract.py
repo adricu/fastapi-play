@@ -1,14 +1,15 @@
 """Contract related calls"""
 from decimal import Decimal
+from functools import lru_cache
 import logging
 import os
 
-from envyaml import EnvYAML
 from web3 import Web3
 from web3.contract.contract import Contract
+from web3.middleware import geth_poa_middleware
 from web3.types import BlockIdentifier
 
-from app.utils.common import BASE_DIR
+from app.utils.common import BASE_DIR, BlockchainConfig
 
 LOGGER = logging.getLogger(__name__)
 
@@ -37,52 +38,57 @@ def validate_address(address: str) -> bool:
     return Web3.is_checksum_address(address)
 
 
-def get_web3_client(blockchain_config: EnvYAML) -> Web3:
+@lru_cache
+def _get_web3_client(blockchain_config: BlockchainConfig) -> Web3:
     """Returns initialized web3 client."""
-    infura_config = blockchain_config["node"]["infura"]
-    infura_network = infura_config["network"]
-    infura_project_id = infura_config["project_id"]
-    if infura_network and infura_project_id:
-        infura_project_secret = infura_config["project_secret"]
-        rpc_url = f"https://:{infura_project_secret}@{infura_network}.infura.io/v3/{infura_project_id}"
+    if blockchain_config.node.infura:  # pragma: no cover
+        rpc_url = (
+            f"https://:{blockchain_config.node.infura.project_secret}@"
+            f"{blockchain_config.node.infura.network}.infura.io/v3/{blockchain_config.node.infura.project_id}"
+        )
     else:
-        rpc_url = blockchain_config["node"]["rpc_url"]
+        rpc_url = blockchain_config.node.rpc_url
     assert rpc_url
-    return Web3(
+    client = Web3(
         Web3.HTTPProvider(
             rpc_url,
         )
     )
+    if blockchain_config.is_poa:  # pragma: no cover
+        client.middleware_onion.inject(geth_poa_middleware, layer=0)
+    return client
 
 
-def get_erc20_contract(blockchain_config: EnvYAML) -> Contract:
+@lru_cache
+def get_erc20_contract(blockchain_config: BlockchainConfig) -> Contract:
     """Returns ERC20 contract."""
     with open(
         os.path.join(ABI_PATH, "ACRToken.abi"), "r", encoding="UTF-8"
     ) as contract_abi_file:
         erc20_contract_abi = contract_abi_file.read()
-    contract: Contract = get_web3_client(blockchain_config).eth.contract(
-        address=blockchain_config["contracts"]["erc20"],
+    contract: Contract = _get_web3_client(blockchain_config).eth.contract(
+        address=blockchain_config.contracts.erc20,
         abi=erc20_contract_abi,
     )
     return contract
 
 
-def get_nft_contract(blockchain_config: EnvYAML) -> Contract:
+@lru_cache
+def get_nft_contract(blockchain_config: BlockchainConfig) -> Contract:
     """Returns NTF contract."""
     with open(
         os.path.join(ABI_PATH, "ACRNFT.abi"), "r", encoding="UTF-8"
     ) as contract_abi_file:
         nft_contract_abi = contract_abi_file.read()
-    contract: Contract = get_web3_client(blockchain_config).eth.contract(
-        address=blockchain_config["contracts"]["nft"],
+    contract: Contract = _get_web3_client(blockchain_config).eth.contract(
+        address=blockchain_config.contracts.nft,
         abi=nft_contract_abi,
     )
     return contract
 
 
 def get_acr_balance(
-    blockchain_config: EnvYAML,
+    blockchain_config: BlockchainConfig,
     address: str,
     block_identifier: BlockIdentifier = "latest",
 ) -> Decimal:
@@ -96,7 +102,7 @@ def get_acr_balance(
 
 
 def get_nft_balance(
-    blockchain_config: EnvYAML,
+    blockchain_config: BlockchainConfig,
     address: str,
     block_identifier: BlockIdentifier = "latest",
 ) -> int:
@@ -108,17 +114,17 @@ def get_nft_balance(
     )
 
 
-def get_current_block_number(blockchain_config: EnvYAML) -> int:
+def get_current_block_number(blockchain_config: BlockchainConfig) -> int:
     """Returns the current block number"""
-    return get_web3_client(blockchain_config).eth.block_number
+    return _get_web3_client(blockchain_config).eth.block_number
 
 
-def get_latest_block_timestamp(blockchain_config: EnvYAML) -> int:
+def get_latest_block_timestamp(blockchain_config: BlockchainConfig) -> int:
     """Returns the timestamp of the latest block"""
-    last_block = get_web3_client(blockchain_config).eth.get_block("latest")
+    last_block = _get_web3_client(blockchain_config).eth.get_block("latest")
     return last_block["timestamp"]
 
 
-def get_net_version(blockchain_config: EnvYAML) -> str:
+def get_net_version(blockchain_config: BlockchainConfig) -> str:
     """Returns net version"""
-    return get_web3_client(blockchain_config).net.version
+    return _get_web3_client(blockchain_config).net.version

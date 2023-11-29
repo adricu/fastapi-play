@@ -10,6 +10,7 @@ api:
     secure_password: "${SECURE_PASSWORD}"
 
 blockchain:
+  is_poa: true
   node:
     infura:
       network:

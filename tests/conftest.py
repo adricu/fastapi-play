@@ -5,13 +5,24 @@ from httpx import BasicAuth
 import pytest
 
 from app.controller import create_api
-from app.utils.common import Environment, load_config
+from app.utils.common import (
+    BlockchainConfig,
+    Environment,
+    get_blockchain_config,
+    load_config,
+)
 
 
 @pytest.fixture()
 def config() -> EnvYAML:
     """Config dictionary from test environment"""
     return load_config(Environment.TEST)
+
+
+@pytest.fixture()
+def blockchain_config() -> BlockchainConfig:
+    """BlockchainConfig dataclass from test environment"""
+    return get_blockchain_config(Environment.TEST)
 
 
 @pytest.fixture()

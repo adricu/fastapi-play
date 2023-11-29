@@ -10,6 +10,7 @@ api:
     secure_password: "not-secure"
 
 blockchain:
+  is_poa: true
   node:
     infura:
       network:
