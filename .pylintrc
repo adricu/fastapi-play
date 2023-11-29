@@ -1,0 +1,19 @@
+[MASTER]
+disable=
+    C0115,C0116,
+
+[FORMAT]
+max-line-length=120
+
+[MESSAGES CONTROL]
+disable=
+    too-many-ancestors,
+    logging-format-interpolation,
+    logging-fstring-interpolation,
+    fixme,
+extension-pkg-whitelist=pydantic
+
+[TYPECHECK]
+generated-members=
+    responses,
+    fake,
