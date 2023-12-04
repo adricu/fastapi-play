@@ -19,16 +19,12 @@ ABI_PATH = os.path.join(BASE_DIR, "abi")
 ACR_TOKEN_DECIMALS = 18
 
 
-def decimal_to_wei(
-    decimal_amount: Decimal, token_decimals: int = COMMON_ERC20_TOKEN_DECIMALS
-) -> int:
+def decimal_to_wei(decimal_amount: Decimal, token_decimals: int = COMMON_ERC20_TOKEN_DECIMALS) -> int:
     """Converts an ERC20/Ether to wei"""
     return int(decimal_amount * Decimal(f"1e{token_decimals}"))
 
 
-def wei_to_decimal(
-    wei: int, token_decimals: int = COMMON_ERC20_TOKEN_DECIMALS
-) -> Decimal:
+def wei_to_decimal(wei: int, token_decimals: int = COMMON_ERC20_TOKEN_DECIMALS) -> Decimal:
     """Converts a wei to ERC20/Ether."""
     return Decimal(str(wei)) * Decimal(f"1e-{token_decimals}")
 
@@ -62,9 +58,7 @@ def _get_web3_client(blockchain_config: BlockchainConfig) -> Web3:
 @lru_cache
 def get_erc20_contract(blockchain_config: BlockchainConfig) -> Contract:
     """Returns ERC20 contract."""
-    with open(
-        os.path.join(ABI_PATH, "ACRToken.abi"), "r", encoding="UTF-8"
-    ) as contract_abi_file:
+    with open(os.path.join(ABI_PATH, "ACRToken.abi"), "r", encoding="UTF-8") as contract_abi_file:
         erc20_contract_abi = contract_abi_file.read()
     contract: Contract = _get_web3_client(blockchain_config).eth.contract(
         address=blockchain_config.contracts.erc20,
@@ -76,9 +70,7 @@ def get_erc20_contract(blockchain_config: BlockchainConfig) -> Contract:
 @lru_cache
 def get_nft_contract(blockchain_config: BlockchainConfig) -> Contract:
     """Returns NTF contract."""
-    with open(
-        os.path.join(ABI_PATH, "ACRNFT.abi"), "r", encoding="UTF-8"
-    ) as contract_abi_file:
+    with open(os.path.join(ABI_PATH, "ACRNFT.abi"), "r", encoding="UTF-8") as contract_abi_file:
         nft_contract_abi = contract_abi_file.read()
     contract: Contract = _get_web3_client(blockchain_config).eth.contract(
         address=blockchain_config.contracts.nft,
