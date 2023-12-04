@@ -5,7 +5,12 @@ from httpx import BasicAuth
 import pytest
 
 from app.controller import create_api
-from app.utils.common import BlockchainConfig, Environment, get_blockchain_config, load_config
+from app.utils.common import (
+    BlockchainConfig,
+    Environment,
+    get_blockchain_config,
+    load_config,
+)
 
 
 @pytest.fixture()

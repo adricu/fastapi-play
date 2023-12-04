@@ -57,9 +57,7 @@ def load_config(environment: Environment) -> EnvYAML:
     """Load and return app confiuration"""
     config_file_path = f"config/{environment}.yaml"
     if not Path(config_file_path).is_file():
-        raise ValueError(
-            f"Unable to find configuration file: {config_file_path}."
-        )  # pragma: no cover
+        raise ValueError(f"Unable to find configuration file: {config_file_path}.")  # pragma: no cover
     return EnvYAML(config_file_path)
 
 

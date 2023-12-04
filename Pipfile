@@ -6,20 +6,17 @@ name = "pypi"
 [packages]
 fastapi = "==0.104.1"
 web3 = "==6.11.4"
-uvicorn = "~=0.24.0"
+uvicorn = "==0.24.0"
 envyaml = "==1.10.211231"
 python-json-logger = "==2.0.7"
 
 [dev-packages]
-pylint = "==3.0.2"
 pytest = "==7.4.3"
-"autopep8" = "~=2.0.4"
-pytest-cov = "~=4.1.0"
-pre-commit = "~=3.5.0"
-black = "==23.11.0"
-isort = "==5.12.0"
+pytest-cov = "==4.1.0"
+pre-commit = "==3.5.0"
 httpx = "==0.25.2"
 mypy = "==1.7.1"
+ruff = "==0.1.6"
 
 [requires]
 python_version = "3.9"

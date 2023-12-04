@@ -55,9 +55,7 @@ def test_validate_address(test_input: str, expected: bool) -> None:
         ("0x0Eee93CF3852bC420Aaf912ac0Ff3226E4238638", 0),
     ],
 )
-def test_get_acr_balance(
-    address: str, expected_balance: int, blockchain_config: BlockchainConfig
-) -> None:
+def test_get_acr_balance(address: str, expected_balance: int, blockchain_config: BlockchainConfig) -> None:
     assert get_acr_balance(blockchain_config, address) == expected_balance
 
 
@@ -70,9 +68,7 @@ def test_get_acr_balance(
         ("0x0Eee93CF3852bC420Aaf912ac0Ff3226E4238638", 0),
     ],
 )
-def test_get_nft_balance(
-    address: str, expected_balance: int, blockchain_config: BlockchainConfig
-) -> None:
+def test_get_nft_balance(address: str, expected_balance: int, blockchain_config: BlockchainConfig) -> None:
     assert get_nft_balance(blockchain_config, address) == expected_balance
 
 

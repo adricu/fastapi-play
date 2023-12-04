@@ -1,0 +1,17 @@
+repos:
+  - repo: local
+    hooks:
+      - id: ruff
+        name: ruff
+        description: "Run 'ruff' for extremely fast Python linting and formatting"
+        entry: sh scripts/ruff.sh
+        language: python
+        types_or: [python, pyi]
+        require_serial: true
+      - id: mypy
+        name: mypy
+        description: "Run 'mypy' for type checking"
+        entry: sh scripts/mypy.sh
+        language: python
+        types_or: [python, pyi]
+        require_serial: true
