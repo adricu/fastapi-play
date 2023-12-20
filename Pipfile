@@ -13,7 +13,7 @@ python-json-logger = "==2.0.7"
 [dev-packages]
 pytest = "==7.4.3"
 pytest-cov = "==4.1.0"
-pre-commit = "==3.5.0"
+pre-commit = "==3.6.0"
 httpx = "==0.25.2"
 mypy = "==1.7.1"
 ruff = "==0.1.8"
