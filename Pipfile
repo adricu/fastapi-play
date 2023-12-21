@@ -6,7 +6,7 @@ name = "pypi"
 [packages]
 fastapi = "==0.105.0"
 web3 = "==6.13.0"
-uvicorn = "==0.24.0.post1"
+uvicorn = "==0.25.0"
 envyaml = "==1.10.211231"
 python-json-logger = "==2.0.7"
 
