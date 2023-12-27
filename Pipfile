@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-fastapi = "==0.105.0"
+fastapi = "==0.108.0"
 web3 = "==6.13.0"
 uvicorn = "==0.25.0"
 envyaml = "==1.10.211231"
