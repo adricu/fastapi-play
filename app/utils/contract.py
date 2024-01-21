@@ -1,8 +1,8 @@
 """Contract related calls"""
-from decimal import Decimal
-from functools import lru_cache
 import logging
 import os
+from decimal import Decimal
+from functools import lru_cache
 
 from web3 import Web3
 from web3.contract.contract import Contract
@@ -58,7 +58,7 @@ def _get_web3_client(blockchain_config: BlockchainConfig) -> Web3:
 @lru_cache
 def get_erc20_contract(blockchain_config: BlockchainConfig) -> Contract:
     """Returns ERC20 contract."""
-    with open(os.path.join(ABI_PATH, "ACRToken.abi"), "r", encoding="UTF-8") as contract_abi_file:
+    with open(os.path.join(ABI_PATH, "ACRToken.abi"), encoding="UTF-8") as contract_abi_file:
         erc20_contract_abi = contract_abi_file.read()
     contract: Contract = _get_web3_client(blockchain_config).eth.contract(
         address=blockchain_config.contracts.erc20,
@@ -70,7 +70,7 @@ def get_erc20_contract(blockchain_config: BlockchainConfig) -> Contract:
 @lru_cache
 def get_nft_contract(blockchain_config: BlockchainConfig) -> Contract:
     """Returns NTF contract."""
-    with open(os.path.join(ABI_PATH, "ACRNFT.abi"), "r", encoding="UTF-8") as contract_abi_file:
+    with open(os.path.join(ABI_PATH, "ACRNFT.abi"), encoding="UTF-8") as contract_abi_file:
         nft_contract_abi = contract_abi_file.read()
     contract: Contract = _get_web3_client(blockchain_config).eth.contract(
         address=blockchain_config.contracts.nft,
@@ -88,7 +88,7 @@ def get_acr_balance(
     return wei_to_decimal(
         get_erc20_contract(blockchain_config)
         .get_function_by_name("balanceOf")(address)
-        .call(**{"block_identifier": block_identifier}),
+        .call(block_identifier=block_identifier),
         ACR_TOKEN_DECIMALS,
     )
 
@@ -102,7 +102,7 @@ def get_nft_balance(
     return int(
         get_nft_contract(blockchain_config)
         .get_function_by_name("balanceOf")(address)
-        .call(**{"block_identifier": block_identifier})
+        .call(block_identifier=block_identifier)
     )
 
 
