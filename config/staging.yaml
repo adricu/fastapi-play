@@ -26,7 +26,7 @@ blockchain:
 logging:
   formatter: standard
   handler: stdout
-  logger:    
+  logger:
     root: INFO
     app: INFO
     uvicorn: INFO

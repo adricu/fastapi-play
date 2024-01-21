@@ -22,7 +22,7 @@ You have to install all the dependencies with [Pipenv](https://github.com/pypa/p
 
 ## OpenAPI docs
 
-For each version of the API an OpenAPI UI will be exposed in different endpoints. For example the version 1 of the API can be found at: 
+For each version of the API an OpenAPI UI will be exposed in different endpoints. For example the version 1 of the API can be found at:
 
 `http://127.0.0.1:8000/api/v1/docs`
 

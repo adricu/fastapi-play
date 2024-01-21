@@ -40,7 +40,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install pipenv==v2022.3.28
         export PIPENV_VENV_IN_PROJECT=1
-        pipenv install --dev        
+        pipenv install --dev
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v2

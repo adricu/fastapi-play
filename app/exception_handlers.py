@@ -15,5 +15,5 @@ def register_exception_handlers(api: FastAPI) -> None:
         LOGGER.exception("API unhandled exception")
         return JSONResponse(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            content={"error_message": f"API unhandled exception: {str(exc)}"},
+            content={"error_message": f"API unhandled exception: {exc!s}"},
         )
